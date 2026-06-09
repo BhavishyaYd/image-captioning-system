@@ -1,18 +1,21 @@
 Image Captioning System
 -----------------------
 
-This project implements an image captioning pipeline combining a pretrained CNN encoder (ResNet50 or VGG16) to extract image features and an LSTM-based decoder to generate natural-language captions.
+This repository contains a compact, working copy of an image captioning project focused on inference and a Tkinter GUI front end.
 
-Primary workflows:
-- Preprocessing: parse dataset captions, build tokenizer, save preprocessing metadata (`preprocess.py`).
-- Feature extraction: use the CNN encoder to extract features from images and save them (`model.extract_features_from_directory`).
-- Training: train the captioning model using extracted features and tokenizer (`train.py`).
-- Inference: load the trained model and generate captions for new images (`predict.py`).
-- Web UI: simple Streamlit app to upload images and receive generated captions (`app.py`).
+Key components and workflows
+- Preprocessing: parse captions and build tokenizer (`preprocess.py`).
+- Feature extraction: extract and save CNN features for images (`model.extract_features_from_directory`).
+- Training: train the captioning model using extracted features (`train.py`).
+- Inference: load a trained model + tokenizer and generate captions (`predict.py`).
+- GUI: `app.py` launches a Tkinter interface for single- or multi-image captioning; `gui_template.py` demonstrates chat/translation integrations.
 
-Important paths:
-- `dataset/` — place dataset images and captions here.
-- `saved_model/` — trained model and tokenizer will be saved here.
-- `extracted_features/` — cached image features.
+Where to put large assets
+- `saved_model/` — place `caption_model.keras` and `tokenizer.pkl` here for inference.
+- `extracted_features/` — put real feature pickles produced by your encoder here.
+- `dataset/` — dataset images and caption files for preprocessing and training.
 
-This repository contains the core scripts only. For full dataset files, pre-trained weights, and additional utilities, see the original workspace.
+Notes
+- This copy intentionally omits large binaries (model weights and full datasets). Add those files if you need to run inference/train locally.
+- Optional chatbot features rely on external APIs (e.g., Gemini) and require API keys and optional dependencies.
+- See `README.md` for quickstart and troubleshooting steps.
